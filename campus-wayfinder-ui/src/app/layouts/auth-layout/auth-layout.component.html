@@ -1,0 +1,28 @@
+<div class="main-content">
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="footer py-5 bg-dark text-light">
+  <div class="container text-center">
+    <div class="row justify-content-between">
+      <div class="col-md-6 text-md-left">
+        <div class="copyright">
+          &copy; {{ test | date: "yyyy" }} Al Akhawayn University
+        </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="nav nav-footer justify-content-center justify-content-md-end">
+          <li class="nav-item">
+            <a href="https://www.aui.ma" class="nav-link" target="_blank">University Website</a>
+          </li>
+          <li class="nav-item">
+            <a href="/about" class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="/contact" class="nav-link">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,90 @@
+<!-- Page content with background image -->
+<div class="container-fluid position-relative p-0" style="min-height: 100vh; background: url('assets/img/brand/back3.jpg') no-repeat center center/cover;">
+  <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-lg-6 col-md-8 col-sm-10 mt-5 mb-5">
+      <div class="card shadow-lg border-0" style="background: rgba(255, 255, 255, 0.9); border-radius: 15px;">
+        <!-- Card Header with Welcome Message -->
+        <div class="card-header text-center p-4" style="background-color: #023a8c; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+          <img src="assets/img/brand/aui_2.png" class="navbar-brand-img mb-3" style="max-width: 80px;" alt="Al Akhawayn University">
+          <h2 class="text-white">User Profile</h2>
+          <p class="text-light mb-0">Manage your personal information and account settings.</p>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body px-lg-5 py-lg-4">
+          <form [formGroup]="adminForm">
+            <!-- Profile Icon -->
+            <div class="text-center mb-4">
+              <i class="ni ni-circle-08" style="font-size: 100px; color: #023a8c;"></i>
+            </div>
+            <!-- First Name and Last Name -->
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="firstName" class="text-dark">First Name</label>
+                  <input type="text" id="firstName" formControlName="firstName" class="form-control" [readonly]="!isEditing" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="lastName" class="text-dark">Last Name</label>
+                  <input type="text" id="lastName" formControlName="lastName" class="form-control" [readonly]="!isEditing" />
+                </div>
+              </div>
+            </div>
+            <!-- Email and Position -->
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="email" class="text-dark">Email</label>
+                  <input type="email" id="email" formControlName="email" class="form-control" [readonly]="!isEditing" />
+                </div>
+
+              </div>
+            </div>
+            <!-- Phone Number -->
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label for="phoneNumber" class="text-dark">Phone Number</label>
+                  <input type="tel" id="phoneNumber" formControlName="phoneNumber" class="form-control" [readonly]="!isEditing" />
+                </div>
+              </div>
+            </div>
+            <!-- Password -->
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <label for="password" class="text-dark">Password</label>
+                  <input type="password" id="password" formControlName="password" class="form-control" [readonly]="!isEditing" />
+                </div>
+              </div>
+            </div>
+            <!-- Action Buttons -->
+            <div class="text-center">
+              <button type="button" *ngIf="!isEditing" class="btn btn-success w-100 mb-3" (click)="enableEditing()">Edit Profile</button>
+              <button type="submit" *ngIf="isEditing" class="btn btn-primary w-100 mb-3" (click)="onSubmit()">Save Changes</button>
+              <button type="button" *ngIf="isEditing" class="btn btn-secondary w-100" (click)="onCancel()">Cancel</button>
+            </div>
+            <!-- Error Message -->
+            <div *ngIf="errorMessage" class="text-danger text-center mt-3">
+              {{ errorMessage }}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Additional Styling -->
+<style>
+  .form-control:read-only {
+    background-color: #f8f9fa;
+    opacity: 1;
+  }
+
+  .btn {
+    border-radius: 30px;
+  }
+</style>

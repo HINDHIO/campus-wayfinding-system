@@ -1,0 +1,69 @@
+/* Sidebar background color changed to white */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Larger brand logo */
+
+
+/* Sidebar link styling */
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  color: #0b4e04 !important;  /* Very dark green text color */
+}
+
+.nav-link .ni {
+  font-size: 1.5rem;
+  color: #0b4e04; /* Very dark green icon color */
+}
+
+.nav-link:hover {
+  background: rgba(0, 123, 255, 0.1); /* Subtle hover effect for better UX */
+  border-radius: 10px;
+}
+
+/* Active link styling */
+.nav-link.active,
+.nav-link.green-active {
+  background: rgba(0, 255, 0, 0.2);
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #0b4e04; /* Dark green border to indicate active link */
+  font-weight: bold;
+  border-radius: 0;
+}
+
+/* Navbar heading for documentation */
+.navbar-heading {
+  font-size: 1rem;
+  color: #0b4e04; /* Very dark green */
+  text-transform: uppercase;
+  margin-left: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Documentation links in the sidebar */
+.navbar-nav.mb-md-3 .nav-link {
+  color: #0b4e04 !important; /* Very dark green */
+}
+
+.navbar-nav.mb-md-3 .nav-link i {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+}
+
+/* Dark green divider */
+hr.bg-dark-green {
+  border-top: 1px solid #0b4e04;
+}
+
+/* Collapse header close button styling */
+.collapse-close .navbar-toggler span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin-bottom: 5px;
+  background: #0b4e04; /* Very dark green close icon */
+}

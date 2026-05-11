@@ -1,0 +1,69 @@
+<div class="container-fluid">
+  <!-- Header Section -->
+  <div class="row mb-3">
+    <div class="col-md-12 d-flex justify-content-center align-items-center">
+      <!-- Search Bar and Clear Route Button -->
+      <div class="search-bar-wrapper d-flex align-items-center">
+        <select
+          id="destinationSearch"
+          class="form-control custom-search-bar text-center"
+          (change)="onDestinationSelected($event.target.value ? locations[$event.target.value] : null)"
+        >
+          <option value="" selected>No Destination Selected</option>
+          <option *ngFor="let location of locations; let i = index" [value]="i">
+            {{ location.name }}
+          </option>
+        </select>
+
+        <button
+          class="btn btn-success ms-3"
+          (click)="clearRoute()"
+          [disabled]="!routeLayer"
+        >
+          Clear Route
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Map Container -->
+  <div class="row">
+    <div class="col-md-12">
+      <div id="map-canvas" class="map-container"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Event Details Modal -->
+<div
+  *ngIf="showEventDetailsModal"
+  class="modal-overlay"
+  (click)="closeEventDetailsModal()"
+>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Events at Location</h2>
+    <ul class="event-list">
+      <li *ngFor="let event of selectedEvents">
+        <p>{{ event.eventName }}</p>
+        <button (click)="viewEventDetails(event)">Discover More</button>
+      </li>
+    </ul>
+    <button (click)="closeEventDetailsModal()">Close</button>
+  </div>
+</div>
+
+<!-- Event Info Modal -->
+<div
+  *ngIf="selectedEvent"
+  class="modal-overlay"
+  (click)="closeEventDetailsModal()"
+>
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Event Details</h2>
+    <p><strong>Name:</strong> {{ selectedEvent.eventName }}</p>
+    <p><strong>Description:</strong> {{ selectedEvent.description }}</p>
+    <p><strong>Start Time:</strong> {{ selectedEvent.startTime | date: 'medium' }}</p>
+    <p><strong>End Time:</strong> {{ selectedEvent.endTime | date: 'medium' }}</p>
+    <button (click)="closeEventDetailsModal()">Close</button>
+  </div>
+</div>

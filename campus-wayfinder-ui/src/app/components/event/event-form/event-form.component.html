@@ -1,0 +1,132 @@
+<div class="container my-4">
+  <!-- Locations Card -->
+  <div class="card border-0 shadow">
+    <div class="card-header bg-gradient-dark text-white d-flex align-items-center">
+      <h3 class="mb-0">Locations</h3>
+    </div>
+    <div class="card-body p-4">
+      <div class="input-group mb-4">
+        <input
+          type="text"
+          class="form-control border-0"
+          placeholder="Search locations"
+          [(ngModel)]="searchQuery"
+          (input)="onSearch()"
+          style="border-radius: 20px 0 0 20px;"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-outline-light text-white bg-success" (click)="onSearch()">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Locations Table -->
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Area</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let location of paginatedLocations">
+            <td>{{ location.name }}</td>
+            <td>{{ location.type }}</td>
+            <td>{{ location.area }}</td>
+            <td>
+              <button class="btn btn-sm btn-success" (click)="selectLocation(location)">
+                Add Event Here
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="card-footer d-flex justify-content-between align-items-center bg-light px-4">
+      <div class="text-muted">Showing Page {{ currentPage }} of {{ Math.ceil(filteredLocations.length / pageSize) }}</div>
+      <div>
+        <button
+          class="btn btn-outline-success btn-sm mr-2"
+          [disabled]="currentPage === 1"
+          (click)="previousPage()"
+        >
+          Previous
+        </button>
+        <button
+          class="btn btn-outline-success btn-sm"
+          [disabled]="currentPage >= Math.ceil(filteredLocations.length / pageSize)"
+          (click)="nextPage()"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Form for Selected Location -->
+  <div *ngIf="selectedLocation" class="card shadow mt-5 border-0">
+    <div class="card-header bg-gradient-dark text-white">
+      <h4 class="mb-0 text-white">Add Event for {{ selectedLocation.name }}</h4>
+    </div>
+    <div class="card-body px-4 py-4">
+      <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="eventName" class="font-weight-bold">Event Name</label>
+            <input
+              type="text"
+              id="eventName"
+              formControlName="eventName"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': eventForm.get('eventName')?.invalid && eventForm.get('eventName')?.touched }"
+            />
+            <div *ngIf="eventForm.get('eventName')?.invalid && eventForm.get('eventName')?.touched" class="text-danger">
+              Event Name is required.
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="description" class="font-weight-bold">Description</label>
+            <textarea
+              id="description"
+              formControlName="description"
+              class="form-control"
+              rows="2"
+              [ngClass]="{ 'is-invalid': eventForm.get('description')?.invalid && eventForm.get('description')?.touched }"
+            ></textarea>
+            <div *ngIf="eventForm.get('description')?.invalid && eventForm.get('description')?.touched" class="text-danger">
+              Description is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="startTime" class="font-weight-bold">Start Time</label>
+            <input type="datetime-local" id="startTime" formControlName="startTime" class="form-control" />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="endTime" class="font-weight-bold">End Time</label>
+            <input type="datetime-local" id="endTime" formControlName="endTime" class="form-control" />
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+          <button type="submit" class="btn btn-success px-4">Add Event</button>
+          <button type="button" class="btn btn-secondary px-4" (click)="cancelEventCreation()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Snackbar for Messages -->
+  <div class="snackbar-container" *ngIf="message">
+    <div [ngClass]="{'custom-snackbar': true, 'snackbar-success': messageType === 'success', 'snackbar-error': messageType === 'error'}">
+      {{ message }}
+    </div>
+  </div>
+</div>

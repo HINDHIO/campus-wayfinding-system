@@ -1,0 +1,102 @@
+<div class="container my-4">
+  <!-- Page Header -->
+  <div class="card border-0 shadow">
+    <div class="card-header bg-gradient-dark text-white d-flex align-items-center">
+      <h3 class="mb-0">Panel Registration</h3>
+    </div>
+    <div class="card-body p-4">
+      <p class="text-muted">
+        Review and manage pending panel registration requests. Assign a location to each panel.
+      </p>
+    </div>
+  </div>
+
+  <!-- Pending Panels Table -->
+  <div class="card border-0 shadow">
+    <div class="card-header bg-gradient-dark d-flex align-items-center">
+      <h4 class="mb-0 text-white">Pending Panel Requests</h4> <!-- Added text-white here -->
+    </div>
+    <div class="card-body p-4">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">IP Address</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let panel of pendingPanels">
+            <td>{{ panel.ipAddress }}</td>
+            <td>{{ panel.status }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="selectPanel(panel)">
+                Select
+              </button>
+              <button class="btn btn-sm btn-danger" (click)="rejectPanel(panel.id!)">
+                Reject
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="pendingPanels.length === 0" class="text-center text-muted">
+        No pending panel requests at the moment.
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between align-items-center bg-light px-4">
+      <div class="text-muted">Total Requests: {{ pendingPanels.length }}</div>
+    </div>
+  </div>
+
+  <!-- Approve Panel Form -->
+  <div *ngIf="selectedPanel" class="card border-0 shadow mt-5">
+    <div class="card-header bg-gradient-dark text-white">
+      <h4 class="mb-0">Approve Panel for {{ selectedPanel.ipAddress }}</h4>
+    </div>
+    <div class="card-body px-4 py-4">
+      <form>
+        <div class="form-group">
+          <label for="selectedLocation" class="font-weight-bold">Assign Location</label>
+          <select
+            id="selectedLocation"
+            class="form-control"
+            [(ngModel)]="selectedLocation"
+            *ngIf="locations.length > 0"
+          >
+            <option *ngFor="let location of locations" [ngValue]="location">
+              {{ location.name }}
+            </option>
+          </select>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+          <button
+            class="btn btn-success px-4"
+            [disabled]="!selectedLocation"
+            (click)="approvePanel()"
+          >
+            Approve
+          </button>
+          <button type="button" class="btn btn-secondary px-4" (click)="cancelApproval()">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Snackbar for Notifications -->
+  <div *ngIf="message" class="snackbar-container mt-3">
+    <div
+      [ngClass]="{
+        'custom-snackbar': true,
+        'snackbar-success': messageType === 'success',
+        'snackbar-error': messageType === 'error'
+      }"
+    >
+      {{ message }}
+    </div>
+  </div>
+</div>

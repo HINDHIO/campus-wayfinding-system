@@ -1,0 +1,58 @@
+.card-header {
+  background: linear-gradient(to right, #004d00, #006600); // Al Akhawayn's green gradient
+  color: #ffffff;
+  border-bottom: none;
+}
+
+.card-body {
+  background-color: #f8f9fa; // light gray for contrast
+}
+
+.btn-success {
+  background-color: #006600; // Dark green for consistency
+  border-color: #004d00;
+  &:hover {
+    background-color: #004d00;
+  }
+}
+
+.btn-outline-success {
+  border-color: #006600;
+  color: #006600;
+  &:hover {
+    background-color: #e6ffe6; // Light green on hover
+  }
+}
+
+.input-group {
+  .form-control {
+    border-radius: 20px 0 0 20px;
+  }
+  .input-group-append .btn {
+    border-radius: 0 20px 20px 0;
+    background: #004d00;
+  }
+}
+
+.snackbar-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 300px;
+}
+
+.custom-snackbar {
+  padding: 15px;
+  color: #fff;
+  border-radius: 4px;
+  background-color: #444; // dark gray for a modern look
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.snackbar-success {
+  background-color: #4caf50; // success green
+}
+
+.snackbar-error {
+  background-color: #f44336; // error red
+}

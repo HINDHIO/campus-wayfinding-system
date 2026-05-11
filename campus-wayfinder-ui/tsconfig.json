@@ -11,14 +11,11 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "target": "ES2022",
+    "target": "es2020",
     "module": "es2020",
     "lib": [
       "es2020",
       "dom"
-    ],
-    "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true,  // Add this line
-    "esModuleInterop": true
+    ]
   }
 }

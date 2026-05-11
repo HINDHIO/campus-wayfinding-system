@@ -1,0 +1,138 @@
+<!-- Page content with background image -->
+<div class="container-fluid position-relative p-0" style="min-height: 100vh; background: url('assets/img/brand/back3.jpg') no-repeat center center/cover;">
+  <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-lg-6 col-md-8 col-sm-10 mt-5 mb-5">
+      <div class="card shadow-lg border-0" style="background: rgba(255, 255, 255, 0.9); border-radius: 15px;">
+        <!-- Card Header with Logo and Welcome Message -->
+        <div class="card-header text-center p-4" style="background-color: #004d40; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+          <img src="assets/img/brand/aui_2.png" class="navbar-brand-img mb-3" style="max-width: 80px;" alt="Al Akhawayn University">
+          <h2 class="text-white">Welcome to Al Akhawayn University</h2>
+          <p class="text-light mb-0">Register a new admin account to manage the campus system.</p>
+        </div>
+
+        <!-- Card Body -->
+        <div class="card-body px-lg-5 py-lg-4" style="max-height: 450px; overflow-y: auto;">
+          <div class="text-center text-muted mb-4">
+            <small>Register with your credentials</small>
+          </div>
+          <form (ngSubmit)="register()" #registerForm="ngForm">
+            <!-- ID Input -->
+            <div class="form-group">
+              <label for="adminId" class="form-label text-muted">Admin ID</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light"><i class="ni ni-badge text-success"></i></span>
+                </div>
+                <input [(ngModel)]="admin.id" id="adminId" name="id" class="form-control no-arrow" placeholder="ID" type="number" required #id="ngModel">
+              </div>
+              <div *ngIf="id.invalid && (id.dirty || id.touched)" class="text-danger small">
+                ID is required and must be provided by the admin.
+              </div>
+            </div>
+            <!-- First Name Input -->
+            <div class="form-group">
+              <label for="firstName" class="form-label text-muted">First Name</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light"><i class="ni ni-hat-3 text-success"></i></span>
+                </div>
+                <input [(ngModel)]="admin.firstName" id="firstName" name="firstName" class="form-control" placeholder="First Name" type="text" required #firstName="ngModel">
+              </div>
+              <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="text-danger small">
+                First Name is required and must be at least 2 characters long.
+              </div>
+            </div>
+            <!-- Last Name Input -->
+            <div class="form-group">
+              <label for="lastName" class="form-label text-muted">Last Name</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light"><i class="ni ni-hat-3 text-success"></i></span>
+                </div>
+                <input [(ngModel)]="admin.lastName" id="lastName" name="lastName" class="form-control" placeholder="Last Name" type="text" required #lastName="ngModel">
+              </div>
+              <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-danger small">
+                Last Name is required and must be at least 2 characters long.
+              </div>
+            </div>
+            <!-- Email Input -->
+            <div class="form-group">
+              <label for="email" class="form-label text-muted">Email Address</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light"><i class="ni ni-email-83 text-success"></i></span>
+                </div>
+                <input [(ngModel)]="admin.email" id="email" name="email" class="form-control" placeholder="Email" type="email" required email #email="ngModel">
+              </div>
+              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger small">
+                A valid email address is required.
+              </div>
+            </div>
+            <!-- Phone Number Input -->
+            <div class="form-group">
+              <label for="phoneNumber" class="form-label text-muted">Phone Number</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light"><i class="ni ni-mobile-button text-success"></i></span>
+                </div>
+                <input [(ngModel)]="admin.phoneNumber" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone Number" type="text" required #phoneNumber="ngModel">
+              </div>
+              <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="text-danger small">
+                Phone Number is required.
+              </div>
+            </div>
+            <!-- Password Input -->
+            <div class="form-group">
+              <label for="password" class="form-label text-muted">Password</label>
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-light"><i class="ni ni-lock-circle-open text-success"></i></span>
+                </div>
+                <input [(ngModel)]="admin.password" id="password" name="password" class="form-control" placeholder="Password" type="password" required minlength="8" #password="ngModel">
+              </div>
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger small">
+                Password must be at least 8 characters long.
+              </div>
+            </div>
+            <!-- Agreement Checkbox -->
+            <div class="row my-4">
+              <div class="col-12">
+                <div class="custom-control custom-control-alternative custom-checkbox">
+                  <input class="custom-control-input" id="customCheckRegister" type="checkbox" required>
+                  <label class="custom-control-label" for="customCheckRegister">
+                    <span class="text-muted">I agree with the <a href="#!" class="text-success">Privacy Policy</a></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <!-- Submit Button -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-success mt-4 w-100" [disabled]="registerForm.invalid">Create Account</button>
+            </div>
+            <!-- Backend Error Message -->
+            <div *ngIf="errorMessage" class="text-danger text-center mt-3">
+              {{ errorMessage }}
+            </div>
+          </form>
+          <!-- Link to Login Page -->
+          <div class="text-center mt-3">
+            <small class="text-muted">Already have an account? <a [routerLink]="['/login']" class="text-success font-weight-bold">Click here to login</a></small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add CSS for Removing Spinner Arrows -->
+<style>
+  /* Hide arrows from number input */
+  input[type="number"].no-arrow {
+    -moz-appearance: textfield;
+  }
+  input[type="number"].no-arrow::-webkit-outer-spin-button,
+  input[type="number"].no-arrow::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>

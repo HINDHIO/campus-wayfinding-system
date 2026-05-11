@@ -1,0 +1,72 @@
+<div class="container my-4">
+  <!-- Page Header -->
+  <div class="card border-0 shadow">
+    <div class="card-header bg-gradient-dark text-white d-flex align-items-center">
+      <h3 class="mb-0">Approved Panels</h3>
+    </div>
+    <div class="card-body p-4">
+      <p class="text-muted">
+        Manage all approved panels and their assigned locations.
+      </p>
+    </div>
+  </div>
+
+  <!-- Approved Panels Table -->
+  <div class="card border-0 shadow mt-4">
+    <div class="card-header bg-gradient-dark d-flex align-items-center">
+      <h4 class="mb-0 text-white">Approved Panels List</h4> <!-- Added text-white here -->
+    </div>
+    <div class="card-body p-4">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">IP Address</th>
+            <th scope="col">Building Name</th>
+            <th scope="col">Latitude</th>
+            <th scope="col">Longitude</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let panel of approvedPanels">
+            <td>{{ panel.id }}</td>
+            <td>{{ panel.ipAddress }}</td>
+            <td>{{ panel.buildingName }}</td>
+            <td>{{ panel.latitude }}</td>
+            <td>{{ panel.longitude }}</td>
+            <td>
+              <button
+                class="btn btn-sm btn-danger"
+                (click)="deletePanel(panel.id)"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="approvedPanels.length === 0" class="text-center text-muted">
+        No approved panels found.
+      </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between align-items-center bg-light px-4">
+      <div class="text-muted">Total Approved Panels: {{ approvedPanels.length }}</div>
+    </div>
+  </div>
+
+  <!-- Snackbar for Notifications -->
+  <div *ngIf="message" class="snackbar-container mt-3">
+    <div
+      [ngClass]="{
+        'custom-snackbar': true,
+        'snackbar-success': messageType === 'success',
+        'snackbar-error': messageType === 'error'
+      }"
+    >
+      {{ message }}
+    </div>
+  </div>
+</div>
