@@ -170,7 +170,7 @@ campus-wayfinder-api/
 | Locations | `PUT` | `/api/locations/{id}` | ✅ | Update location |
 | Routes | `GET` | `/api/routes` | ❌ | Get available routes |
 | Routes | `POST` | `/api/routes` | ✅ | Create route |
-| Panels | `GET` | `/api/panels` | ❌ | List registered panels |
+| Panels | `GET` | `/api/panels` | ✅ | List registered panels |
 | Panels | `POST` | `/api/panels/register` | ✅ | Register kiosk panel |
 | Mapbox | `GET` | `/api/mapbox/token` | ❌ | Retrieve secure Mapbox token |
 | Interactions | `POST` | `/api/interactions` | ❌ | Log map interaction event |
