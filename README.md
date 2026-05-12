@@ -25,12 +25,12 @@ panel displays for Al Akhawayn University.
 
 ## 📸 Screenshots
 
-| 3D Map & Navigation | Admin Dashboard |
-|:---:|:---:|
 | **3D Map & Navigation** | **Admin Dashboard** |
+|:---:|:---:|
 | <img width="1200" alt="3D Map" src="https://github.com/user-attachments/assets/ca15090f-60d9-450d-82ba-28201f5aad5c" /> | <img width="1200" alt="Admin Dashboard" src="https://github.com/user-attachments/assets/c2b7f57b-b638-4c03-bcf1-f319b8a6fafe" /> |
 | **Event Management** | **Panel Registration** |
 | <img width="1200" alt="Event Management" src="https://github.com/user-attachments/assets/325d4f08-b1f6-4273-85ec-6166990ca3f0" /> | <img width="1200" alt="Panel Registration" src="https://github.com/user-attachments/assets/86488c23-7cf3-49e5-9d01-94671192c62d" /> |
+
 
 ---
 
