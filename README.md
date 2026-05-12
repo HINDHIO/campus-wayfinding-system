@@ -276,11 +276,18 @@ cd campus-wayfinder-api
 ```
 
 ```properties
+spring.application.name=Campus_map
+spring.datasource.url=jdbc:mysql://localhost:3306/wayfinding_db?createDatabaseIfNotExists=true
+spring.datasource.username=
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 server.port=8080
-
-spring.datasource.url=jdbc:mysql://localhost:3306/campus_wayfinder
-spring.datasource.username=YOUR_DB_USERNAME
-spring.datasource.password=YOUR_DB_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.generate-ddl=true
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.MariaDBDialect
+spring.jpa.show-sql=true
+spring.jpa.open-in-view=false
+server.address=0.0.0.0
 
 mapbox.access-token=YOUR_MAPBOX_TOKEN
 
