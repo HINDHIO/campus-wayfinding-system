@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="assets/logo.png" alt="Campus Wayfinder" width="80" />
 
 # Campus Wayfinding System
 ### Al Akhawayn University
