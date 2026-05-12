@@ -362,7 +362,7 @@ or use placeholder values and document real setup in this README only.
 - [ ] AI-based route optimisation
 - [ ] QR-code physical location tagging
 - [ ] WebSocket live event push updates
-- [ ] Multilingual UI (Arabic · French · English)
+- [ ] Multilingual UI 
 
 ---
 
